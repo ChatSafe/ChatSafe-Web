@@ -8,6 +8,7 @@ import {
   Input,
   FormGroup,
   Label,
+  Alert,
   Form } from 'reactstrap';
 
 class SetupModal extends React.Component {
@@ -15,38 +16,28 @@ class SetupModal extends React.Component {
     super(props);
 
     this.state = {
-      modal: false
+      modal: false,
+      alert: false
     };
 
     this.toggle = this.toggle.bind(this);
-  }
-
-  toggle() {
-    this.setState({
-      modal: !this.state.modal
-    });
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-
-    const options = {
-      server: e.target.server.value,
-      identifier: e.target.identifier.value,
-      room: e.target.room.value
-    };
-
-    this.toggle();
-    this.props.connect(options);
+    this.alert = this.alert.bind(this);
   }
 
   render() {
+    let alert;
+
+    if(this.state.alert) {
+      alert = <Alert color="danger">{this.state.alert}</Alert>;
+    }
+
     return (
       <div>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} backdrop='static'>
           <ModalHeader>Setup</ModalHeader>
           <Form onSubmit={this.onSubmit.bind(this)}>
             <ModalBody>
+              {alert}
               <FormGroup>
                 <Label>Server</Label>
                 <Input type="text" placeholder="Server" name="server" />
@@ -67,6 +58,33 @@ class SetupModal extends React.Component {
         </Modal>
       </div>
     );
+  }
+
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
+
+  alert(alert) {
+    this.setState({
+      alert: alert
+    });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+
+    this.alert(false);
+
+    const options = {
+      server: e.target.server.value,
+      identifier: e.target.identifier.value,
+      room: e.target.room.value
+    };
+
+    this.toggle();
+    this.props.connect(options);
   }
 }
 

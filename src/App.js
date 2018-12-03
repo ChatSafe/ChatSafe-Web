@@ -140,6 +140,7 @@ class App extends Component {
 
   setupEvents() {
     this.socket.on('connected', this.connected.bind(this));
+    this.socket.on('identifierInUse', this.identifierInUse.bind(this));
     this.socket.on('newMessage', this.newMessage.bind(this));
     this.socket.on('newClient', this.newClient.bind(this));
     this.socket.on('lostClient', this.lostClient.bind(this));
@@ -161,6 +162,11 @@ class App extends Component {
     this.setState({
       clients: data.clients
     });
+  }
+
+  identifierInUse() {
+    this.modal.current.alert('That identifier is in use.');
+    this.modal.current.toggle();
   }
 
   async newMessage(data) {

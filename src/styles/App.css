@@ -1,0 +1,57 @@
+body {
+  width: 100%;
+  height: 100%;
+  padding-top: 55px;
+  margin: 0;
+  overflow: hidden;
+}
+
+nav {
+  border-bottom: 1px solid grey;
+}
+
+.panel {
+  height: 100%;
+}
+
+.wrapper {
+  height: 100%;
+}
+
+.chat-text {
+  padding: 10px;
+}
+
+.chat-identifier {
+  color: #0073F7;
+}
+
+.chat-message {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.chat-box {
+  position: fixed;
+  bottom: 0;
+  padding: 10px;
+  width: 75%;
+}
+
+.clients-table {
+  width: 100%;
+}
+
+.side-panel {
+  border-left: 1px solid grey;
+}
+
+.clients-panel {
+  height: 100%;
+  padding-top: 300px;
+}
+
+.public-key {
+  color: green;
+  font-family: monospace;
+}

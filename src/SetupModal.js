@@ -43,8 +43,8 @@ class SetupModal extends React.Component {
   render() {
     return (
       <div>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Setup</ModalHeader>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} backdrop='static'>
+          <ModalHeader>Setup</ModalHeader>
           <Form onSubmit={this.onSubmit.bind(this)}>
             <ModalBody>
               <FormGroup>

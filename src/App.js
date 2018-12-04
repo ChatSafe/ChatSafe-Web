@@ -190,7 +190,13 @@ class App extends Component {
   }
 
   lostClient(data) {
+    const clients = this.state.clients;
 
+    clients.splice(clients.findIndex(x => x.identifier === data), 1);
+
+    this.setState({
+      clients: clients
+    });
   }
 
   //</editor-fold>
